@@ -1,0 +1,6 @@
+*
+!.gitignore
+!skins/
+!skins/light.css
+!skins/default.css
+!skins/new.css

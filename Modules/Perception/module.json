@@ -1,0 +1,11 @@
+{
+    "name": "Perception",
+    "alias": "perception",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Perception\\Providers\\PerceptionServiceProvider"
+    ],
+    "files": []
+}

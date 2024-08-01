@@ -1,0 +1,11 @@
+{
+    "name": "Culqi",
+    "alias": "culqi",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Culqi\\Providers\\CulqiServiceProvider"
+    ],
+    "files": []
+}

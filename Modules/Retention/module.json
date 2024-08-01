@@ -1,0 +1,11 @@
+{
+    "name": "Retention",
+    "alias": "retention",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Retention\\Providers\\RetentionServiceProvider"
+    ],
+    "files": []
+}

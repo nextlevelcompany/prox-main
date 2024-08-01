@@ -1,0 +1,127 @@
+<?php
+
+namespace Modules\Ecommerce\Http\Controllers;
+
+use App\Http\Controllers\Tenant\EmailController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Culqi\Culqi;
+use Modules\Culqi\Mail\CulqiMail;
+use Modules\Order\Models\Order;
+use stdClass;
+use Illuminate\Support\Str;
+use Exception;
+use App\Models\Tenant\ConfigurationEcommerce;
+use Illuminate\Support\Facades\Validator;
+
+class CulqiController extends Controller
+{
+    public function __construct()
+    {
+        // $this->middleware('input.request:document,web', ['only' => ['store']]);
+    }
+
+    public function index()
+    {
+
+    }
+
+    public function payment(Request $request)
+    {
+        try {
+
+            $customer = (array)json_decode($request->customer);
+
+            $validator = Validator::make($customer, [
+                'telefono' => 'required|numeric',
+                'direccion' => 'required',
+                'codigo_tipo_documento_identidad' => 'required|numeric',
+                'numero_documento' => 'required|numeric',
+                'identity_document_type_id' => 'required|numeric'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+
+
+            $user = auth()->user();
+            $configuration = ConfigurationEcommerce::first();
+
+
+            $SECRET_API_KEY = $configuration->token_private_culqui;
+
+            $culqi = new Culqi(array('api_key' => $SECRET_API_KEY));
+
+            $charge = $culqi->Charges->create(
+                array(
+                    "amount" => $request->precio,
+                    "currency_code" => "PEN",
+                    "email" => $request->email,
+                    "description" => $request->producto,
+                    "source_id" => $request->token,
+                    //  "metadata" => array (
+                    //      "ruc" => $_POST['ruc'],
+                    //      "contacto" => $_POST['contacto'],
+                    //      "telefono" => $_POST['telefono']),
+                    "installments" => $request->installments
+                )
+            );
+
+            $order = Order::create([
+                'external_id' => Str::uuid()->toString(),
+                'customer' => json_decode($request->customer),
+                'shipping_address' => 'direccion 1',
+                'items' => json_decode($request->items),
+                'total' => $request->precio_culqi,
+                'reference_payment' => 'culqui',
+                'purchase' => json_decode($request->purchase)
+
+            ]);
+
+
+            $customer_email = $request->email;
+            $document = new stdClass;
+            $document->client = $user->name;
+            $document->product = $request->producto;
+            $document->total = $request->precio_culqi;
+            $document->items = json_decode($request->items, true);
+
+            $email = $customer_email;
+            $mailable = new CulqiMail($document);
+            $id = (int)$request->id;
+            $model = __FILE__ . ";;" . __LINE__;
+            $sendIt = EmailController::SendMail($email, $mailable, $id, $model);
+            /*
+            Configuration::setConfigSmtpMail();
+            $array_email = explode(',', $customer_email);
+            if (count($array_email) > 1) {
+                foreach ($array_email as $email_to) {
+                    $email_to = trim($email_to);
+                  if(!empty($email_to)) {
+                        Mail::to($email_to)->send(new CulqiEmail($document));
+                    }
+                }
+            } else {
+                Mail::to($customer_email)->send(new CulqiEmail($document));
+            }
+            */
+
+            return [
+                'success' => true,
+                'culqui' => $charge,
+                'order' => $order,
+            ];
+            //  return json_encode($charge);
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+
+    }
+
+
+}

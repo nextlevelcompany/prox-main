@@ -1,0 +1,11 @@
+{
+    "name": "Summary",
+    "alias": "summary",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Summary\\Providers\\SummaryServiceProvider"
+    ],
+    "files": []
+}

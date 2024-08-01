@@ -1,0 +1,11 @@
+{
+    "name": "TechnicalService",
+    "alias": "technicalservice",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TechnicalService\\Providers\\TechnicalServiceServiceProvider"
+    ],
+    "files": []
+}

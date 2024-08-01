@@ -1,0 +1,11 @@
+{
+    "name": "Voided",
+    "alias": "voided",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Voided\\Providers\\VoidedServiceProvider"
+    ],
+    "files": []
+}

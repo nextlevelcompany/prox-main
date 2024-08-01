@@ -1,0 +1,11 @@
+{
+    "name": "SaleNote",
+    "alias": "salenote",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SaleNote\\Providers\\SaleNoteServiceProvider"
+    ],
+    "files": []
+}

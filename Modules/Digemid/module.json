@@ -1,0 +1,11 @@
+{
+    "name": "Digemid",
+    "alias": "digemid",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Digemid\\Providers\\DigemidServiceProvider"
+    ],
+    "files": []
+}

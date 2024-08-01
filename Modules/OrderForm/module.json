@@ -1,0 +1,11 @@
+{
+    "name": "OrderForm",
+    "alias": "orderform",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\OrderForm\\Providers\\OrderFormServiceProvider"
+    ],
+    "files": []
+}

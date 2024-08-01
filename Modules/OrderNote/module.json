@@ -1,0 +1,11 @@
+{
+    "name": "OrderNote",
+    "alias": "ordernote",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\OrderNote\\Providers\\OrderNoteServiceProvider"
+    ],
+    "files": []
+}

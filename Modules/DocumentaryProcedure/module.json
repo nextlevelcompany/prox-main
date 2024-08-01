@@ -1,0 +1,11 @@
+{
+    "name": "DocumentaryProcedure",
+    "alias": "documentaryprocedure",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DocumentaryProcedure\\Providers\\DocumentaryProcedureServiceProvider"
+    ],
+    "files": []
+}

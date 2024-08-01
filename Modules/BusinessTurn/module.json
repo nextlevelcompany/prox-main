@@ -1,0 +1,11 @@
+{
+    "name": "BusinessTurn",
+    "alias": "businessturn",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\BusinessTurn\\Providers\\BusinessTurnServiceProvider"
+    ],
+    "files": []
+}

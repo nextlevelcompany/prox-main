@@ -1,0 +1,11 @@
+{
+    "name": "Padron",
+    "alias": "padron",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Padron\\Providers\\PadronServiceProvider"
+    ],
+    "files": []
+}

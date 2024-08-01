@@ -1,0 +1,11 @@
+{
+    "name": "FullSubscription",
+    "alias": "fullsubscription",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FullSubscription\\Providers\\FullSubscriptionServiceProvider"
+    ],
+    "files": []
+}

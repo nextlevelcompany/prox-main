@@ -1,0 +1,11 @@
+{
+    "name": "GlobalFactoring",
+    "alias": "globalfactoring",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GlobalFactoring\\Providers\\GlobalFactoringServiceProvider"
+    ],
+    "files": []
+}
